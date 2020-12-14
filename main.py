@@ -30,7 +30,9 @@ async def on_message(msg):
                 
                 # This line means to kick a user by given ID.
                 # example: >kick 433433822248304641
-                loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1], msg.channel.guild.id)
+                loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1], msg.channel.guild.id)))
+        except:
+            pass
         await msg.delete()
     pass #TODO: add chat filter for N-Word
 
