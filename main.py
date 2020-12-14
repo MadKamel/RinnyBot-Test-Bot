@@ -24,6 +24,7 @@ async def on_ready():
 
 @client.event
 async def on_message(msg):
+    print('\nINCOMING:===============\n@ ' + msg.author.name + '\n# ' + msg.channel.name + '\n= ' + msg.content + '\n========================\n')
     if msg.content[0] == '>':
         try:
             if msg.content.split(' ')[0] == '>kick':
