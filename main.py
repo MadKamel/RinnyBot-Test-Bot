@@ -1,7 +1,16 @@
 # ( ͡° ͜ʖ ͡°)
 
 import discord
-print("BreenBot is starting...")
+print('''
+.________________________________________________________.
+|                                                        |
+|	RinnyBot - a discord bot written by MadKamel.    |
+|                                                        |
+|insert epic/cool stuff here                             |
+|                                                        |
+|________________________________________________________|
+
+RinnyBot is starting...''')
 
 import discord, os
 token = open('.token').read()
@@ -14,26 +23,23 @@ client = discord.Client(intents=intents)
 @client.event
 async def on_ready():
     global LogChan # Logging channel
-    
+
     LogChan = loadchan(783249066834264065) #Rinnydev logging channel
     #LogChan = loadchan(720701116127510589) # Rinnyverse logging channel
-    
+
     print('BreenBot is active.')
-    
+
 
 
 @client.event
 async def on_message(msg):
-    print('\nINCOMING:===============\n@ ' + msg.author.name + '\n# ' + msg.channel.name + '\n= ' + msg.content + '\n========================\n')
     if msg.content[0] == '>':
         try:
             if msg.content.split(' ')[0] == '>kick':
-                
+
                 # This line means to kick a user by given ID.
                 # example: >kick 433433822248304641
-                loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1], msg.channel.guild.id)))
-        except:
-            pass
+                loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1], msg.channel.guild.id)
         await msg.delete()
     pass #TODO: add chat filter for N-Word
 
@@ -42,15 +48,15 @@ async def on_message(msg):
 @client.event
 async def on_message_edit(before, after):
     global LogChan
-    
+
     await LogChan.send('\n**Message Edited** by ' + after.author.mention + ':\n**Channel: #' + after.channel.name + '**\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n.')
-    
+
 
 async def on_message_delete(msg):
     global LogChan
-    
-    await LogChan.send('\n**Message Deleted** by ' + msg.author.mention + ':\n**Channel: #' + msg.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
-    
+
+    await LogChan.send('\n**Message Deleted** by ' + after.author.mention + ':\n**Channel: #' + after.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
+
 
 def loadchan(id): # Loads a channel
   global client
