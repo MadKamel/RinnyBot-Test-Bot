@@ -30,7 +30,7 @@ async def on_ready():
     global LogChan # Logging channel
 
     #LogChan = loadchan(723564592722083931) #Rinnydev logging channel
-    LogChan = loadchan(796432818132484166) # Rinnyverse logging channel
+    LogChan = loadchan(796421683769638953) # Rinnyverse logging channel
 
     print('RinnyBot is active.')
 
@@ -44,8 +44,7 @@ async def on_message(msg):
         if msg.content.split(' ')[0] == '>kick':
           # This line means to kick a user by given ID.
           # example: >kick 433433822248304641
-          loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1]), msg.channel.guild.id))
-          print('kicked a user lol')
+          loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1])))
         await msg.delete()
     except:
         pass
