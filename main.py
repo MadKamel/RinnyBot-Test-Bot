@@ -14,7 +14,7 @@ RinnyBot is starting...''')
 
 
 
-import discord, os
+import discord
 token = open('.token').read()
 print('Token read, initializing the bot.')
 print('Token is (' + token + ')')
@@ -47,8 +47,6 @@ async def on_message(msg):
                 await msg.delete()
         except:
            pass
-    if 'nigger' in str(msg.content).split(' '):
-        loadguild(msg.channel.guild.id).kick(loadmember(int(msg.author.id), msg.channel.guild.id))
 
 
 
