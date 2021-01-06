@@ -29,7 +29,7 @@ print('Bot initialized, loading code.')
 async def on_ready():
     global LogChan # Logging channel
 
-    LogChan = loadchan(783249066834264065) #Rinnydev logging channel
+    LogChan = loadchan(796421683769638953) #Rinnydev logging channel
     #LogChan = loadchan(720701116127510589) # Rinnyverse logging channel
 
     print('RinnyBot is active.')
