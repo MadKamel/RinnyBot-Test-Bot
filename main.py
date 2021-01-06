@@ -29,8 +29,8 @@ print('Bot initialized, loading code.')
 async def on_ready():
     global LogChan # Logging channel
 
-    LogChan = loadchan(796421683769638953) #Rinnydev logging channel
-    #LogChan = loadchan(720701116127510589) # Rinnyverse logging channel
+    #LogChan = loadchan(723564592722083931) #Rinnydev logging channel
+    LogChan = loadchan(720701116127510589) # Rinnyverse logging channel
 
     print('RinnyBot is active.')
 
@@ -55,13 +55,13 @@ async def on_message(msg):
 async def on_message_edit(before, after):
     global LogChan
 
-    await LogChan.send('\n**Message Edited** by ' + after.author.mention + ':\n**Channel: #' + after.channel.name + '**\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n.')
+    await LogChan.send('\n**Message Edited** by ' + after.author.name + ':\n**Channel: #' + after.channel.name + '**\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n.')
 
 
 async def on_message_delete(msg):
     global LogChan
 
-    await LogChan.send('\n**Message Deleted** by ' + msg.author.mention + ':\n**Channel: #' + msg.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
+    await LogChan.send('\n**Message Deleted** by ' + msg.author.name + ':\n**Channel: #' + msg.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
 
 
 def loadchan(id): # Loads a channel
