@@ -60,7 +60,7 @@ async def on_message_edit(before, after):
 async def on_message_delete(msg):
     global LogChan
 
-    await LogChan.send('\n**Message Deleted** by ' + after.author.mention + ':\n**Channel: #' + after.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
+    await LogChan.send('\n**Message Deleted** by ' + msg.author.mention + ':\n**Channel: #' + msg.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
 
 
 def loadchan(id): # Loads a channel
