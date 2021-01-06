@@ -17,7 +17,7 @@ RinnyBot is starting...''')
 import discord
 token = open('.token').read()
 print('Token read, initializing the bot.')
-print('Token is (' + token + ')')
+#print('Token is (' + token + ')')
 
 # Init Discord Bot Client, with full intents.
 intents = discord.Intents.all()
