@@ -45,7 +45,6 @@ async def on_message(msg):
           # This line means to kick a user by given ID.
           # example: >kick 433433822248304641
           loadguild(msg.channel.guild.id).kick(loadmember(int(msg.content.split(' ')[1])))
-        await msg.delete()
     except:
         pass
 
@@ -55,13 +54,13 @@ async def on_message(msg):
 async def on_message_edit(before, after):
     global LogChan
 
-    await LogChan.send('\n**Message Edited** by ' + after.author.name + ':\n**Channel: #' + after.channel.name + '**\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n.')
+    await LogChan.send('\n**Message Edited** by** ' + after.author.name + ':\n**Channel: #' + after.channel.name + '\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n')
 
-
+@client.event
 async def on_message_delete(msg):
     global LogChan
 
-    await LogChan.send('\n**Message Deleted** by ' + msg.author.name + ':\n**Channel: #' + msg.channel.name + '**\nMessage: ```' + msg.content + '```\n.')
+    await LogChan.send('\n**Message Deleted** by** ' + msg.author.name + ':\n**Channel: #' + msg.channel.name + '\nMessage: ```' + msg.content + '```\n')
 
 
 def loadchan(id): # Loads a channel
