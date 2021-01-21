@@ -11,7 +11,7 @@ print('''
 |________________________________________________________|
 
 RinnyBot is starting...''')
-
+embedsoff = False
 
 
 import discord
@@ -52,16 +52,35 @@ async def on_message(msg):
 
 @client.event
 async def on_message_edit(before, after):
-    global LogChan
+    if embedsoff:
+        global LogChan
 
-    await LogChan.send('\n**Message Edited** by** ' + after.author.name + ':\n**Channel: #' + after.channel.name + '\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n')
+        await LogChan.send('\n**Message Edited** by** ' + after.author.name + ':\n**Channel: #' + after.channel.name + '\nBefore: ```' + before.content + '```\nAfter: ```' + after.content + '```\n')
+    else:
+        beforemsg = before.content
+        aftermsg = after.content
+        
+        #Thanks to stackoverflow for this code here
+        embedMsg = discord.Embed(title="Message edited in #" + before.channel.name + ".", description=before.author.mention, color=0x00ff00)
+        embedMsg.set_thumbnail(url=before.author.avatar_url)
+        embedMsg.add_field(name="Before", value=beforemsg, inline=False)
+        embedMsg.add_field(name="After", value=aftermsg, inline=False)
+        await LogChan.send(embed=embedMsg)
 
 @client.event
 async def on_message_delete(msg):
-    global LogChan
+    if embedsoff:
+        global LogChan
 
-    await LogChan.send('\n**Message Deleted** by** ' + msg.author.name + ':\n**Channel: #' + msg.channel.name + '\nMessage: ```' + msg.content + '```\n')
-
+        await LogChan.send('\n**Message Deleted** Author:** ' + msg.author.name + ':\n**Channel: #' + msg.channel.name + '\nBefore: ```' + msg.content + '```\n')
+    else:
+        beforemsg = msg.content
+        
+        #Thanks to stackoverflow for this code here
+        embedMsg = discord.Embed(title="Message deleted in #" + msg.channel.name + ".", description=msg.author.mention, color=0x0000ff)
+        embedMsg.set_thumbnail(url=msg.author.avatar_url)
+        embedMsg.add_field(name="Message", value=beforemsg, inline=False)
+        await LogChan.send(embed=embedMsg)
 
 def loadchan(id): # Loads a channel
     global client
