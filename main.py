@@ -4,7 +4,7 @@
 print('''
 .________________________________________________________.
 |                                                        |
-|	RinnyBot - a discord bot written by MadKamel.          |
+|	RinnyBot - a discord bot written by MadKamel.        |
 |                                                        |
 |insert epic/cool stuff here                             |
 |                                                        |
